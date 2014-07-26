@@ -1,0 +1,16 @@
+{
+  "name": "try_boombox",
+  "dependencies": {
+    "components/underscore": "*",
+    "components/jquery": "*",
+    "components/bootstrap": "*",
+    "CyberAgent/boombox.js": "*"
+  },
+  "scripts": [
+    "assets/js/index.js"
+  ],
+  "styles": [
+    "assets/css/index.css",
+    "assets/vendor/css/bootstrap.css"
+  ]
+}
