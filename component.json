@@ -3,14 +3,13 @@
   "dependencies": {
     "components/underscore": "*",
     "components/jquery": "*",
-    "components/bootstrap": "*",
-    "CyberAgent/boombox.js": "*"
+    "components/bootstrap": "*"
   },
   "scripts": [
     "assets/js/index.js"
   ],
   "styles": [
     "assets/css/index.css",
-    "assets/vendor/css/bootstrap.css"
+	"vendor/bootstrap/bootstrap.min.css"
   ]
 }
