@@ -1,21 +1,41 @@
-### –Ú•WF
-* [ **component** ][1] ‚ÅƒpƒbƒP[ƒW‰»
-* github‚ÉƒAƒbƒv‚·‚é
+### ç›®æ¨™ï¼š
+* [ **component** ][1] ã§ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åŒ–
+* githubã«ã‚¢ãƒƒãƒ—ã™ã‚‹
 
 
-### ‰½‚ð‚Â‚­‚é‚©F
-**ƒVƒ“ƒOƒ‹ƒy[ƒWƒAƒvƒŠ** { **`boombox`** —˜—p‚µ‚Ä‰½‚©BˆÄ‚ÍˆÈ‰ºB
+### ä½•ã‚’ã¤ãã‚‹ã‹ï¼š
+**ã‚·ãƒ³ã‚°ãƒ«ãƒšãƒ¼ã‚¸ã‚¢ãƒ—ãƒª** ï¼‹ **`boombox`** åˆ©ç”¨ã—ã¦ä½•ã‹ã€‚æ¡ˆã¯ä»¥ä¸‹ã€‚
 
-* ƒCƒ“ƒgƒƒNƒCƒY
+* ã‚¤ãƒ³ãƒˆãƒ­ã‚¯ã‚¤ã‚º
 * Weave Weaver
 
 
-### Žg—pƒ‰ƒCƒuƒ‰ƒŠEƒc[ƒ‹F
+### ä½¿ç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ»ãƒ„ãƒ¼ãƒ«ï¼š
 * `gulp`
 * `component`
 * `underscore`
 * `jquery`
 * `bootstrap`
 
+---
+
+### Install
+* `git clone https://github.com/varmil/try_boombox.git`
+* `cd try_boombox`
+* `npm install`
+* `component build`
+
+
+##### ç·¨é›†æ™‚ã€å¤‰æ›´ã‚’ç›£è¦–ã—ã¦è‡ªå‹•buildã•ã›ã‚‹ã€‚
+* `gulp watch`
+
+
+##### Demo
+* `npm install -g http-server`
+* `cd try_boombox`
+* `http-server -p 9999 ./`
+* Go => [http://localhost:9999/index.html][2]
+
 
 [1]: https://github.com/component/component
+[2]: http://localhost:9999/index.html
