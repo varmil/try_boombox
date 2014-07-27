@@ -20,6 +20,8 @@
 ---
 
 ### Install
+* `npm install -g component`
+* `npm install -g gulp`
 * `git clone https://github.com/varmil/try_boombox.git`
 * `cd try_boombox`
 * `npm install`
