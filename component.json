@@ -2,8 +2,7 @@
 	"name": "try_boombox",
 	"dependencies": {
 		"components/underscore": "*",
-		"components/jquery": "*",
-		"components/bootstrap": "*"
+		"components/jquery": "*"
 	},
 	"scripts": [
 		"assets/js/index.js"
