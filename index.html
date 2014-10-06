@@ -1,38 +1,206 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Getting Started with Component</title>
-    <link rel="stylesheet" href="build/build.css">
-  </head>
-  <body>
-    <h2>Play Single Sound with Boombox</h2>
+<html lang="en">
+<head>
+  <title>Mix Sound - boombox.js</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.css">
+  <style type="text/css">
+   #w {
+     margin: 20px
+   }
+   #debug {
+     overflow-y: scroll;
+     height: 200px;
+   }
+   .volume {
+    margin-top: 15px;
+   }
+  </style>
+</head>
 
-	<div id="w">
-		<div class="controls">
-			<div class="btn-group">
-				<button id="play" class="btn btn-success btn-sm">Play</button>
-				<button id="stop" class="btn btn-success btn-sm">Stop</button>
-				<button id="pause" class="btn btn-success btn-sm">Pause</button>
-				<button id="resume" class="btn btn-success btn-sm">Resume</button>
-				<button id="replay" class="btn btn-success btn-sm">Replay</button>
-			</div>
-			<div class="volume">
-				<span class="volume-text">Volume</span>
-					<input id="volume" type="range" min="0" max="1" step="0.1" />
-			</div>
-		</div>
-
-		<h2>Debug</h2>
-		<pre id="debug"></pre>
-
-		<div id="info">
-			<h2>Infomation</h2>
-		</div>
-
-	</div>
+<body>
+  <div id="w">
+    <h1>1. HTMLAudio</h1>
+    <div class="btn-group">
+      <button id="play1" class="btn btn-success btn-sm">Play</button>
+      <button id="stop1" class="btn btn-success btn-sm">Stop</button>
+      <button id="pause1" class="btn btn-success btn-sm">Pause</button>
+      <button id="resume1" class="btn btn-success btn-sm">Resume</button>
+      <button id="replay1" class="btn btn-success btn-sm">Replay</button>
+    </div>
+    <div class="volume">
+      <span class="glyphicon glyphicon glyphicon-volume-off"></span>
+      <input id="volume1" type="range" min="0" max="1" step="0.1">
+      <span class="glyphicon glyphicon-volume-up"></span>
+    </div>
 
 
-	<script type="text/javascript" src="vendor/boombox.min.js"></script><!-- for product -->
-    <script src="build/build.js"></script>
-  </body>
-</html>
+
+    <h1>2. HTMLAudio</h1>
+    <div class="btn-group">
+      <button id="play2" class="btn btn-success btn-sm">Play</button>
+      <button id="stop2" class="btn btn-success btn-sm">Stop</button>
+      <button id="pause2" class="btn btn-success btn-sm">Pause</button>
+      <button id="resume2" class="btn btn-success btn-sm">Resume</button>
+      <button id="replay2" class="btn btn-success btn-sm">Replay</button>
+    </div>
+    <div class="volume">
+      <span class="glyphicon glyphicon glyphicon-volume-off"></span>
+      <input id="volume2" type="range" min="0" max="1" step="0.1">
+      <span class="glyphicon glyphicon-volume-up"></span>
+    </div>
+
+
+
+
+    <h1>3. HTMLVideo</h1>
+    <div class="btn-group">
+      <button id="play3" class="btn btn-success btn-sm">Play</button>
+      <button id="stop3" class="btn btn-success btn-sm">Stop</button>
+      <button id="pause3" class="btn btn-success btn-sm">Pause</button>
+      <button id="resume3" class="btn btn-success btn-sm">Resume</button>
+      <button id="replay3" class="btn btn-success btn-sm">Replay</button>
+    </div>
+    <div class="volume">
+      <span class="glyphicon glyphicon glyphicon-volume-off"></span>
+      <input id="volume3" type="range" min="0" max="1" step="0.1">
+      <span class="glyphicon glyphicon-volume-up"></span>
+    </div>
+
+    <h2>Debug</h2>
+    <pre id="debug"></pre>
+
+    <div id="info">
+      <h2>Infomation</h2>
+		<pre></pre>
+    <audio preload="auto" src="./assets/sound/sound.m4a"></audio><audio preload="auto" src="./assets/sound/sound.m4a"></audio><video src="./assets/sound/sound.m4a" style="position: absolute; top: -1000px;"></video></div>
+
+  </div>
+
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.2/zepto.min.js"></script>
+  <script src="vendor/boombox.min.js"></script>
+  <script>
+
+   // short-cut dom
+   $info = $("#info");
+   $debug = $("#debug");
+
+
+   // log
+   var debug = function (msg, no) {
+     $debug.append(no + ' : ' + msg + '\n');
+     $debug.scrollTop($debug[0].scrollHeight);
+   };
+
+   // boombox running
+   boombox.setup({
+     webaudio: {
+       use: true // force override
+     },
+     htmlaudio: {
+       use: false // force override
+     },
+     htmlvideo: {
+       use: false // force override
+     }
+   });
+
+   // Events
+   _.each([1, 2, 3], function (no, idx) {
+     $("#play" + no).click(function (e) {
+       boombox.get('single' + no).play();
+       debug('## play' + no, no);
+     });
+     $("#stop" + no).click(function (e) {
+       boombox.get('single' + no).stop();
+       debug('## stop' + no, no);
+     });
+     $("#pause" + no).click(function (e) {
+       boombox.get('single' + no).pause();
+       debug('## pause' + no, no);
+     });
+     $("#resume" + no).click(function (e) {
+       boombox.get('single' + no).resume();
+       debug('## resume' + no, no);
+     });
+     $("#replay" + no).click(function (e) {
+       boombox.get('single' + no).replay();
+       debug('## replay' + no, no);
+     });
+     $("#volume" + no).change(function (e) {
+       var volume = e.currentTarget.value;
+       debug('## volume'  + no + ': ' + volume, no);
+       boombox.get('single' + no).volume(volume);
+     });
+
+     //setInterval(function () { debug(JSON.stringify(boombox.pool['single' + no].state), no); }, 1000)
+   });
+
+   // HTMLAudio 1
+   var options1 = {
+     src: [
+       {
+         media: 'audio/mp4',
+         path: './assets/sound/sound.m4a'
+       }
+     ]
+   };
+
+   boombox.load('single1', options1, function (err, htmlaudio) {
+     $info.append(htmlaudio.$el);
+     debug("## sound loaded. used: " + boombox.pool.single1.constructor.name, 1);
+   });
+
+   // HTMLAudio 2
+   var options2 = {
+     src: [
+       {
+         media: 'audio/mp4',
+         path: './assets/sound/sound.m4a'
+       }
+     ]
+   };
+
+   boombox.load('single2', options2, function (err, htmlaudio) {
+     $info.append(htmlaudio.$el);
+     debug("## sound loaded. used: " + boombox.pool.single2.constructor.name, 2);
+   });
+
+   // HTMLVideo 3
+   var options3 = {
+     src: [
+       {
+         media: 'audio/mp4',
+         path: './assets/sound/sound.m4a'
+       }
+     ]
+   };
+
+   boombox.load('single3', options3, true, function (err, htmlvideo) {
+     $info.append(htmlvideo.$el);
+     $(htmlvideo.$el)
+          .css('position', 'absolute')
+          .css('top', '-1000px')
+     ;
+     debug("## sound loaded. used: " + boombox.pool.single3.constructor.name, 3);
+   });
+   var info = '';
+   info += '\nState of boombox.js\n';
+   info += '\twebaudio : '  + boombox.isWebAudio() + '\n';
+   info += '\thtmlaudio: ' + boombox.isHTMLAudio() + '\n';
+   info += '\thtmlvideo: ' + boombox.isHTMLVideo() + '\n';
+   info += '\n';
+   info += 'Browser Support\n';
+   info += '\twebaudio : ' + !!window.webkitAudioContext + '\n';
+   info += '\thtmlaudio: ' + !!window.Audio + '\n';
+   info += '\thtmlvideo: ' + !!document.createElement + '\n';
+
+
+   $("#info pre").text(info);
+
+  </script>
+
+
+</body></html>
